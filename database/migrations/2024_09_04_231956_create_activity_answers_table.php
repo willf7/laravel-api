@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activities_answers', function (Blueprint $table) {
+        Schema::create('activity_answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('selectedOptionId');
-            $table->foreign('selectedOptionId')->references('id')->on('activities_options');
+            $table->foreign('selectedOptionId')->references('id')->on('activity_options');
             $table->unsignedBigInteger('questionId');
-            $table->foreign('questionId')->references('id')->on('activities_questions');
+            $table->foreign('questionId')->references('id')->on('activity_questions');
             $table->unsignedBigInteger('submissionId');
-            $table->foreign('submissionId')->references('id')->on('activities_submissions');
+            $table->foreign('submissionId')->references('id')->on('activity_submissions');
             $table->text('answerText');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activities_answers');
+        Schema::dropIfExists('activity_answers');
     }
 };

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activities_grades', function (Blueprint $table) {
+        Schema::create('activity_grades', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('submissionId');
-            $table->foreign('submissionId')->references('id')->on('activities_submissions');
+            $table->foreign('submissionId')->references('id')->on('activity_submissions');
             $table->unsignedBigInteger('teacherId');
             $table->foreign('teacherId')->references('id')->on('users');
             $table->decimal('grade');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activities_grades');
+        Schema::dropIfExists('activity_grades');
     }
 };
