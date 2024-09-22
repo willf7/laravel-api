@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastName');
+            $table->string('password')->nullable(false);
             $table->date('birthDate');
             $table->string('cpf')->unique()->nullable(false);
             $table->string('email')->unique()->nullable(false);
-            $table->string('password');
-            $table->enum('role', ['student', 'teacher', 'admin']);
+            $table->enum('role', ['student', 'teacher', 'admin'])->default('student');
             $table->timestamps();
         });
     }

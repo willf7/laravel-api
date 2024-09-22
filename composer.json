@@ -9,7 +9,8 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "tymon/jwt-auth": "^2.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -48,6 +49,11 @@
         ],
         "sailUp": [
             "bash ./vendor/laravel/sail/bin/sail up -d"
+        ],
+        "make:action": [
+            "mkdir -p app/Actions",
+            "touch app/Actions/$1.php",
+            "echo \"<?php\\n\\nnamespace App\\\\Actions;\\n\\nclass $1\\n{\\n    public function __invoke()\\n    {\\n        // Lógica da action aqui\\n    }\\n}\" > app/Actions/$1.php"
         ]
     },
     "extra": {
