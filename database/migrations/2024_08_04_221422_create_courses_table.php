@@ -6,27 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('image');
-            $table->decimal('annualPrice');
-            $table->decimal('monthlyPrice');
+            $table->decimal('annual_price', 10, 2);
+            $table->decimal('monthly_price', 10, 2);
             $table->json('topics');
-            $table->unsignedBigInteger('tutorId');
-            $table->foreign('tutorId')->references('id')->on('users');
+            $table->foreignId('tutor_id')->constrained('users');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('courses');

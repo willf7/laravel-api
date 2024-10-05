@@ -6,24 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('activity_choices', function (Blueprint $table) {
             $table->id();
-            $table->string('optionText');
-            $table->boolean('isCorrect');
-            $table->unsignedBigInteger('questionId');
-            $table->foreign('questionId')->references('id')->on('activity_questions');
+            $table->string('option_text');
+            $table->boolean('is_correct');
+            $table->foreignId('activity_question_id')->constrained('activity_questions');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('activity_choices');

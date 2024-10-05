@@ -6,27 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('video_lesson', function (Blueprint $table) {
+        Schema::create('video_lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable(false);
             $table->text('description');
-            $table->text('url');
+            $table->text('url')->nullable(false);
             $table->date('due_date');
-            $table->unsignedBigInteger('subjectId');
-            $table->foreign('subjectId')->references('id')->on('subjects');
-            $table->string('status');
+            $table->integer('status')->default(1);
+            $table->foreignId('subject_id')->constrained('subjects');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('video_lesson');

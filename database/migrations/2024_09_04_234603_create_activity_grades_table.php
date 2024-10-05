@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('activity_grades', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('submissionId');
-            $table->foreign('submissionId')->references('id')->on('activity_submissions');
-            $table->unsignedBigInteger('teacherId');
-            $table->foreign('teacherId')->references('id')->on('users');
+            $table->foreignId('activity_submission_id')->constrained('activity_submissions');
+            $table->foreignId('teacher_id')->constrained('users');
             $table->decimal('grade');
-            $table->text('feedback');
+            $table->text('feedbacks');
             $table->timestamps();
         });
     }

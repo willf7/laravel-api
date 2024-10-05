@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('activity_answers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('selectedOptionId');
-            $table->foreign('selectedOptionId')->references('id')->on('activity_options');
-            $table->unsignedBigInteger('questionId');
-            $table->foreign('questionId')->references('id')->on('activity_questions');
-            $table->unsignedBigInteger('submissionId');
-            $table->foreign('submissionId')->references('id')->on('activity_submissions');
-            $table->text('answerText');
+            $table->foreignId('selected_option_id')->constrained('activity_options');
+            $table->foreignId('activity_question_id')->constrained('activity_questions');
+            $table->foreignId('activity_submission_id')->constrained('activity_submissions');
+            $table->text('answer_text');
             $table->timestamps();
         });
     }
