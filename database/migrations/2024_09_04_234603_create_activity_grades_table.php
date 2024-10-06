@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('grade');
             $table->text('feedbacks');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

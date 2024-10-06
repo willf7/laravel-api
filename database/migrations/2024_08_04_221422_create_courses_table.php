@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('topics');
             $table->foreignId('tutor_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

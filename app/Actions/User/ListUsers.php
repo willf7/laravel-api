@@ -17,7 +17,7 @@ class ListUsers
             $response['message'] = 'Executed with success';
             $response['code'] = 200;
             $response['data'] = $users;
-        } catch (Exception $ex) {
+        } catch (Exception $e) {
             $response['message']= 'Something wrong';
             $response['code']= 500;
             $response['error']= true;
